@@ -30,8 +30,8 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
                     a_list[i] = chr((ord(a_list[i]) + shift) - 26)
                 else:
                     a_list[i] = chr(ord(a_list[i]) + shift)
-            ciphertext = "".join(a_list)
             i = i + 1
+        ciphertext = "".join(a_list)
     return ciphertext
 
 
@@ -63,8 +63,8 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
                     a_list[i] = chr(26 + (ord(a_list[i]) - shift))
                 else:
                     a_list[i] = chr(ord(a_list[i]) - shift)
-            plaintext = "".join(a_list)
             i = i + 1
+        plaintext = "".join(a_list)
     return plaintext
 
 
