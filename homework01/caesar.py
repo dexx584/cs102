@@ -16,6 +16,22 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     """
     ciphertext = ""
     # PUT YOUR CODE HERE
+    if len(list(plaintext)) > 0:
+        a_list = list(plaintext)
+        i = 0
+        while i < len(a_list):
+            if a_list[i].isalpha():
+                if (
+                    ord(a_list[i]) + shift > 90
+                    and ord(a_list[i]) < 91
+                    or ord(a_list[i]) + shift > 122
+                    and ord(a_list[i]) < 123
+                ):
+                    a_list[i] = chr((ord(a_list[i]) + shift) - 26)
+                else:
+                    a_list[i] = chr(ord(a_list[i]) + shift)
+            i = i + 1
+        ciphertext = "".join(a_list)
     return ciphertext
 
 
@@ -34,6 +50,21 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     """
     plaintext = ""
     # PUT YOUR CODE HERE
+    if len(list(ciphertext)) > 0:
+        a_list = list(ciphertext)
+        i = 0
+        while i < len(a_list):
+            if a_list[i].isalpha():
+                if (
+                    ord(a_list[i]) - shift < 65
+                    or ord(a_list[i]) - shift < 97
+                    and ord(a_list[i]) > 96
+                ):
+                    a_list[i] = chr(26 + (ord(a_list[i]) - shift))
+                else:
+                    a_list[i] = chr(ord(a_list[i]) - shift)
+            i = i + 1
+        plaintext = "".join(a_list)
     return plaintext
 
 
